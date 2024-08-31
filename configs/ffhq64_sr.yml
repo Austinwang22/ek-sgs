@@ -1,0 +1,38 @@
+operator: 
+  name: super_resolution
+  sigma_noise: 0.01    # measurement noise level
+  scale_factor: 2
+  in_resolution: 64
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 80.
+  url: https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-ffhq-64x64-uncond-vp.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 64
+
+ref_dir: figs/ffhq64-val
+
+sampling:
+  num_steps: 30
+  rho_min: 0.1
+  rho_max: 10.
+  decay_rate: 0.9
+  scale: 50.
+  batch_size: 64
+  prior_steps: 25
+  l_steps: 300
+  resample: True
+  approx_cov: False
+  init_ensemble: 256
+  growth_rate: 2
+  scheduler_steps: 10
+
+log:
+  basedir: ffhq64-sr
+  progdir: prog
+  tracking: False

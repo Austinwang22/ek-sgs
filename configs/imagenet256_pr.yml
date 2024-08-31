@@ -1,0 +1,40 @@
+operator: 
+  name: phase_retrieval
+  sigma_noise: 0.05      # measurement noise level
+  oversample: 2.0
+  resolution: 256
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 80.
+  url: models/imagenet256.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 256
+
+ref_dir: figs/imagenet256-val
+
+sampling:
+  # num_samples: 2048
+  num_steps: 38
+  rho_min: 0.2
+  rho_max: 10.
+  decay_rate: 0.9
+  scale: 25.
+  batch_size: 16
+  prior_steps: 25
+  l_steps: 500
+  resample: True
+  approx_cov: True
+  init_ensemble: 1024
+  growth_rate: 1
+  scheduler_steps: 20
+
+log:
+  basedir: imagenet256-pr
+  progdir: prog
+  tracking: False
+  vis_cov: False

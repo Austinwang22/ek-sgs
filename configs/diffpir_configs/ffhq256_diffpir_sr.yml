@@ -1,0 +1,34 @@
+operator: 
+  name: super_resolution
+  sigma_noise: 0.05    # measurement noise level
+  scale_factor: 4
+  in_resolution: 256
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 100.
+  url: models/ffhq256.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 256
+
+ref_dir: figs/ffhq256-val
+
+sampling:
+  num_samples: 1
+  num_steps: 100
+  rho: 7
+  lamb: 250.
+  xi: 0.
+  no_grad: True
+  num_queries: 50000
+  mu: 0.01
+  batch_size: 10000
+
+log:
+  basedir: ffhq256-diffpir-sr
+  progdir: prog
+  tracking: False

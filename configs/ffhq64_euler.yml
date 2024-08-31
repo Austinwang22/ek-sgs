@@ -1,0 +1,18 @@
+data:
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 80.
+  url: https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-ffhq-64x64-uncond-vp.pkl
+  device: cuda
+  img_size: 64
+
+sampling:
+  num_samples: 64
+  num_steps: 40
+  rho: 7
+
+log:
+  basedir: ffhq64-euler
+  progdir: prog
+  tracking: False

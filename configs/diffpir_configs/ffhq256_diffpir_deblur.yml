@@ -1,0 +1,35 @@
+operator: 
+  name: gaussian_blur
+  sigma_noise: 0.05      # measurement noise level
+  intensity: 3
+  kernel_size: 61
+  device: 'cuda'
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 100.
+  url: models/ffhq256.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 256
+
+ref_dir: figs/ffhq256-val
+
+sampling:
+  num_samples: 1
+  num_steps: 200
+  rho: 7
+  lamb: 750.
+  xi: 0.
+  no_grad: True
+  num_queries: 10000
+  mu: 0.05
+  batch_size: 1000
+
+log:
+  basedir: ffhq256-diffpir-deblur
+  progdir: prog
+  tracking: False

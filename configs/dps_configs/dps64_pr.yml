@@ -1,0 +1,29 @@
+operator: 
+  name: phase_retrieval
+  sigma_noise: 0.05      # measurement noise level
+  oversample: 2.0
+  resolution: 64
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 40.
+  url: https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-ffhq-64x64-uncond-vp.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 64
+
+ref_dir: figs/ffhq64-val
+
+sampling:
+  num_samples: 1
+  num_steps: 1000
+  rho: 7
+  scale: 100.
+
+log:
+  basedir: dps64-pr
+  progdir: prog
+  tracking: False

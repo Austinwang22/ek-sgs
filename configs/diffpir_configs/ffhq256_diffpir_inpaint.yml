@@ -1,0 +1,32 @@
+operator: 
+  name: inpainting
+  sigma_noise: 0.05      # measurement noise level
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 100.
+  url: models/ffhq256.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 256
+
+ref_dir: figs/ffhq256-val
+
+sampling:
+  num_samples: 1
+  num_steps: 200
+  rho: 7
+  lamb: 750.
+  xi: 0.
+  no_grad: True
+  num_queries: 20000
+  mu: 0.05
+  batch_size: 500
+
+log:
+  basedir: ffhq256-diffpir-inpaint
+  progdir: prog
+  tracking: False

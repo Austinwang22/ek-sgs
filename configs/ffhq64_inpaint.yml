@@ -1,0 +1,37 @@
+operator: 
+  name: inpainting
+  sigma_noise: 0.05      # measurement noise level
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 80.
+  url: https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-ffhq-64x64-uncond-vp.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 64
+
+ref_dir: figs/ffhq64-val
+
+sampling:
+  num_steps: 30
+  rho_min: 0.2
+  rho_max: 10.
+  decay_rate: 0.9
+  scale: 50.
+  batch_size: 64
+  prior_steps: 20
+  l_steps: 500
+  resample: True
+  approx_cov: False
+  init_ensemble: 256
+  growth_rate: 2
+  scheduler_steps: 10
+
+log:
+  basedir: ffhq64-inpaint
+  progdir: prog
+  tracking: False
+  vis_cov: True

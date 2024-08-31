@@ -1,0 +1,38 @@
+operator: 
+  name: inpainting
+  sigma_noise: 0.05      # measurement noise level
+
+model: 
+  sigma_min: 0.002
+  sigma_max: 80.
+  url: models/imagenet256.pkl
+  device: cuda
+
+mask_opt:
+  mask_type: box
+  mask_ratio: [0.4, 0.7]
+  image_size: 256
+
+ref_dir: figs/imagenet256-val
+
+sampling:
+  # num_samples: 1024
+  num_steps: 50
+  rho_min: 0.2
+  rho_max: 40.
+  decay_rate: 0.9
+  scale: 300.
+  batch_size: 16
+  prior_steps: 25
+  l_steps: 500
+  resample: True
+  approx_cov: True
+  init_ensemble: 512
+  growth_rate: 2
+  scheduler_steps: 20
+
+log:
+  basedir: imagenet256-inpaint
+  progdir: prog
+  tracking: False
+  vis_cov: False
