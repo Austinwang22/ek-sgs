@@ -5,4 +5,4 @@ Solving inverse problems with diffusion models.
 python3 inverse_problem.py --config configs/ffhq256_inpaint.yml
 ```
 
-![Alt text](images/demo.png)
+![Alt text](images/demo256.png)
